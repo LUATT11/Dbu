@@ -458,7 +458,7 @@ task.spawn(function()
                     game:GetService("ReplicatedStorage").Package.Events.cha:InvokeServer("Blacknwhite27")            
             end
         end)
-        wait()
+        task.wait()
     end
 end)
 
