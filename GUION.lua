@@ -472,12 +472,42 @@ task.spawn(function()
         wait(.5)
     end
 end)
+
+
+spawn(function()
+    local originalPosition = lplr.Character.HumanoidRootPart.Position
+
+    local bodyPosition = Instance.new("BodyPosition")
+    bodyPosition.MaxForce = Vector3.new(400000, 400000, 400000)
+    bodyPosition.D = 1000
+    bodyPosition.P = 10000
+    bodyPosition.Position = originalPosition + Vector3.new(0, 5, 0)  -- Eleva un poco
+    bodyPosition.Parent = lplr.Character.HumanoidRootPart
+
+    local Event = game:GetService("ReplicatedStorage").Package.Events.Start
+    Event:InvokeServer()
+    task.wait()
+
+    Event:InvokeServer()
+    task.wait()
+
+    lplr.PlayerGui.Main.bruh.Disabled = true
+    lplr.PlayerGui.Main.bruh.Disabled = false
+    task.wait()
+
+    Event:InvokeServer()
+
+    task.wait(2)
+
+    bodyPosition:Destroy()
+
+    game.Workspace.Gravity = 196.2
+end)
             
 --fin de todo \/
     end)    
     wait(1)
 end)
-
 
 
 
