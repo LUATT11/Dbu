@@ -486,10 +486,10 @@ spawn(function()
 
     local Event = game:GetService("ReplicatedStorage").Package.Events.Start
     Event:InvokeServer()
-    task.wait()
+    wait()
 
     Event:InvokeServer()
-    task.wait()
+    wait()
 
     lplr.PlayerGui.Main.bruh.Disabled = true
     lplr.PlayerGui.Main.bruh.Disabled = false
@@ -497,7 +497,7 @@ spawn(function()
 
     Event:InvokeServer()
 
-    task.wait(2)
+    wait()
 
     bodyPosition:Destroy()
 
