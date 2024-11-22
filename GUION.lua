@@ -452,7 +452,7 @@ end)
 task.spawn(function()
     while true do
         pcall(function()
-            if data.Quest.Value ~= "" and  getIsActive4() then
+            if    getIsActive4() then
                 game:GetService("ReplicatedStorage").Package.Events.p:FireServer("Blacknwhite27", 1)
                 game:GetService("ReplicatedStorage").Package.Events.p:FireServer("Blacknwhite27", 2)
                     game:GetService("ReplicatedStorage").Package.Events.cha:InvokeServer("Blacknwhite27")            
@@ -467,6 +467,7 @@ task.spawn(function()
         pcall(function()
             if getIsActive5() then
                 game:GetService("ReplicatedStorage").Package.Events.reb:InvokeServer()
+                
             end
         end)
         wait(.5)
