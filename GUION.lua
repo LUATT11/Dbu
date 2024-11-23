@@ -1,10 +1,14 @@
 local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
 local TextLabel = Instance.new("TextLabel")
-local MenuPanel1 = Instance.new("Frame")
-local MenuPanel2 = Instance.new("Frame")
-local NextButton = Instance.new("TextButton")
-local ToggleButton = Instance.new("TextButton")
+local Cuadro1 = Instance.new("Frame")
+local Cuadro2 = Instance.new("Frame")
+local Barra1 = Instance.new("ScrollingFrame")
+local Barra2 = Instance.new("ScrollingFrame")
+local Siguiente = Instance.new("TextButton")
+local Mix = Instance.new("TextButton")
+local UIStroke1 = Instance.new("UIStroke")
+local UIStroke2 = Instance.new("UIStroke")
 local lplr = game.Players.LocalPlayer
 local data = game.ReplicatedStorage:WaitForChild("Datas"):WaitForChild(lplr.UserId)
 
@@ -26,66 +30,60 @@ TextLabel.TextSize = 14
 TextLabel.TextStrokeTransparency = 1
 TextLabel.TextScaled = true
 
-MenuPanel1.Parent = TextLabel
-MenuPanel1.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-MenuPanel1.Position = UDim2.new(0, 0, 1, 0)
-MenuPanel1.Size = UDim2.new(0, 410, 0, 400)
-MenuPanel1.Visible = false  -- Comienza oculto
+Cuadro1.Parent = TextLabel
+Cuadro1.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Cuadro1.Position = UDim2.new(0, 0, 1, 0)
+Cuadro1.Size = UDim2.new(0, 410, 0, 400)
+Cuadro1.Visible = false  -- Comienza oculto
 
+Cuadro2.Parent = TextLabel
+Cuadro2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Cuadro2.Position = UDim2.new(0, 0, 1, 0)
+Cuadro2.Size = UDim2.new(0, 410, 0, 400)
+Cuadro2.Visible = false  -- Comienza oculto
 
-MenuPanel2.Parent = TextLabel
-MenuPanel2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-MenuPanel2.Position = UDim2.new(0, 0, 1, 0)
-MenuPanel2.Size = UDim2.new(0, 410, 0, 400)
-MenuPanel2.Visible = false  -- Comienza oculto
+Barra1.Parent = Cuadro1
+Barra1.Size = UDim2.new(1, 0, 1, 0)
+Barra1.CanvasSize = UDim2.new(0, 0, 2, 0)
+Barra1.ScrollBarThickness = 10
+Barra1.BackgroundTransparency = 1
+Barra1.ScrollingDirection = Enum.ScrollingDirection.Y 
 
+Barra2.Parent = Cuadro2
+Barra2.Size = UDim2.new(1, 0, 1, 0)
+Barra2.CanvasSize = UDim2.new(0, 0, 2, 0)
+Barra2.ScrollBarThickness = 10
+Barra2.BackgroundTransparency = 1
+Barra2.ScrollingDirection = Enum.ScrollingDirection.Y 
 
+Siguiente.Parent = Frame
+Siguiente.BackgroundTransparency = 1
+Siguiente.Position = UDim2.new(1, -60, 0, 0)
+Siguiente.Size = UDim2.new(0, 30, 0, 30)
+Siguiente.Text = ">"
+Siguiente.TextColor3 = Color3.fromRGB(255, 255, 255)
+Siguiente.TextSize = 20
 
-local ScrollingFrame1 = Instance.new("ScrollingFrame")
-ScrollingFrame1.Parent = MenuPanel1
-ScrollingFrame1.Size = UDim2.new(1, 0, 1, 0)
-ScrollingFrame1.CanvasSize = UDim2.new(0, 0, 2, 0)
-ScrollingFrame1.ScrollBarThickness = 10
-ScrollingFrame1.BackgroundTransparency = 1
-ScrollingFrame1.ScrollingDirection = Enum.ScrollingDirection.Y 
+Mix.Parent = Frame
+Mix.BackgroundTransparency = 1
+Mix.Position = UDim2.new(1, -90, 0, 0)
+Mix.Size = UDim2.new(0, 30, 0, 30)
+Mix.Text = "+"
+Mix.TextColor3 = Color3.fromRGB(255, 255, 255)
+Mix.TextSize = 20
 
-
-local ScrollingFrame2 = Instance.new("ScrollingFrame")
-ScrollingFrame2.Parent = MenuPanel2
-ScrollingFrame2.Size = UDim2.new(1, 0, 1, 0)
-ScrollingFrame2.CanvasSize = UDim2.new(0, 0, 2, 0)
-ScrollingFrame2.ScrollBarThickness = 10
-ScrollingFrame2.BackgroundTransparency = 1
-ScrollingFrame2.ScrollingDirection = Enum.ScrollingDirection.Y 
-
-NextButton.Parent = Frame
-NextButton.BackgroundTransparency = 1
-NextButton.Position = UDim2.new(1, -60, 0, 0)
-NextButton.Size = UDim2.new(0, 30, 0, 30)
-NextButton.Text = ">"
-NextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-NextButton.TextSize = 20
-
-ToggleButton.Parent = Frame
-ToggleButton.BackgroundTransparency = 1
-ToggleButton.Position = UDim2.new(1, -90, 0, 0)
-ToggleButton.Size = UDim2.new(0, 30, 0, 30)
-ToggleButton.Text = "+"
-ToggleButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-ToggleButton.TextSize = 20
-
---incio color\/
-local UIStroke1 = Instance.new("UIStroke")
-UIStroke1.Parent = MenuPanel1
+--incio Borde color\/
+UIStroke1.Parent = Cuadro1
 UIStroke1.Thickness = 2
 UIStroke1.Color = Color3.fromRGB(255, 0, 0) 
 
-local UIStroke2 = Instance.new("UIStroke")
-UIStroke2.Parent = MenuPanel2
+UIStroke2.Parent = Cuadro2
 UIStroke2.Thickness = 2
 UIStroke2.Color = Color3.fromRGB(255, 0, 0) 
+--parte 2 de color Borde\/
 
-local textBox = Instance.new("TextBox", MenuPanel2)
+--Cuadro para txt para ir ah Bills \/
+local textBox = Instance.new("TextBox", Cuadro2)
 textBox.Size = UDim2.new(0, 200, 0, 50)
 textBox.Position = UDim2.new(0.5, -100, 0.5, -25)
 textBox.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
@@ -122,6 +120,7 @@ textBox.FocusLost:Connect(function()
         minStrength = nil
     end
 end)
+--Fin Ciclo de cuadro para ir Bills
 
 
 task.spawn(function()
@@ -143,8 +142,7 @@ task.spawn(function()
         task.wait(1) 
     end
 end)
---Fin color/\
-
+--Fin color Borde/\
 
 --incio de color txt\/
 local textProperties = {
@@ -159,7 +157,7 @@ local textProperties = {
 
 for _, props in pairs(textProperties) do
     local TextLabel = Instance.new("TextLabel")
-    TextLabel.Parent = ScrollingFrame1
+    TextLabel.Parent = Barra1
     TextLabel.Size = UDim2.new(0, 200, 0, 36)
     TextLabel.Position = props.position
     TextLabel.BackgroundTransparency = 1
@@ -169,41 +167,40 @@ for _, props in pairs(textProperties) do
 end
  --Fin del color txt/\
  
- 
+--Codeg Para Button Minimizar = Maximizar
 local currentPanel = 1
 local isMinimized = true  
-NextButton.MouseButton1Click:Connect(function()
+Siguiente.MouseButton1Click:Connect(function()
     if not isMinimized then
         if currentPanel == 1 then
-            MenuPanel1.Visible = false
+            Cuadro1.Visible = false
             currentPanel = 2
-            MenuPanel2.Visible = true
+            Cuadro2.Visible = true
         else
-            MenuPanel2.Visible = false
+            Cuadro2.Visible = false
             currentPanel = 1
-            MenuPanel1.Visible = true
+            Cuadro1.Visible = true
         end
     end
 end)
 
-ToggleButton.MouseButton1Click:Connect(function()
+Mix.MouseButton1Click:Connect(function()
     isMinimized = not isMinimized
     if isMinimized then
-        MenuPanel1.Visible = false
-        MenuPanel2.Visible = false
-        ToggleButton.Text = "+"
+        Cuadro1.Visible = false
+        Cuadro2.Visible = false
+        Mix.Text = "+"
     else
         if currentPanel == 1 then
-            MenuPanel1.Visible = true
+            Cuadro1.Visible = true
         else
-            MenuPanel2.Visible = true
+            Cuadro2.Visible = true
         end
-        ToggleButton.Text = "×"
+        Mix.Text = "×"
     end
 end)
 
---Aki ya es del interrutor <:
-
+--Aki ya es del interrutor <: \/
 local function SaveSwitchState(isActive, switchName)
     writefile(switchName.."_SwitchState.json", game:GetService("HttpService"):JSONEncode({SwitchOn = isActive, LastModified = os.time()}))
 end
@@ -246,11 +243,13 @@ local function createSwitch(parent, position, switchName, initialState)
     return function() return isActive end
 end
 
-local getIsActive1 = createSwitch(ScrollingFrame1, UDim2.new(0.1, 50, 0, 1), "Switch1", LoadSwitchState("Switch1"))
-local getIsActive2 = createSwitch(ScrollingFrame1, UDim2.new(0.1, 75, 0, 52), "Switch2", LoadSwitchState("Switch2"))
-local getIsActive3 = createSwitch(ScrollingFrame1, UDim2.new(0.1, 45, 0.120, 0), "Switch3", LoadSwitchState("Switch3"))
-local getIsActive4 = createSwitch(ScrollingFrame1, UDim2.new(0.1, 45, 0.240, 0), "Switch4", LoadSwitchState("Switch4"))
-local getIsActive5 = createSwitch(ScrollingFrame1, UDim2.new(0.1, 25, 0.180, 0), "Switch5", LoadSwitchState("Switch5"))
+local getIsActive1 = createSwitch(Barra1, UDim2.new(0.1, 50, 0, 1), "Switch1", LoadSwitchState("Switch1"))
+local getIsActive2 = createSwitch(Barra1, UDim2.new(0.1, 75, 0, 52), "Switch2", LoadSwitchState("Switch2"))
+local getIsActive3 = createSwitch(Barra1, UDim2.new(0.1, 45, 0.120, 0), "Switch3", LoadSwitchState("Switch3"))
+local getIsActive4 = createSwitch(Barra1, UDim2.new(0.1, 45, 0.240, 0), "Switch4", LoadSwitchState("Switch4"))
+local getIsActive5 = createSwitch(Barra1, UDim2.new(0.1, 25, 0.180, 0), "Switch5", LoadSwitchState("Switch5"))
+--Casi fin del interrutor /\
+
 
 task.spawn(function()
     pcall(function()
@@ -259,7 +258,6 @@ local data = game.ReplicatedStorage.Datas[player.UserId]
 local events = game:GetService("ReplicatedStorage").Package.Events
 
 local SelectedQuest, SelectedMob
-
 
 local questDataOutsideID = {
     {range = {0, 200000}, options = {"Klirin", "Kid Nohag"}},
@@ -270,7 +268,6 @@ local questDataOutsideID = {
     {range = {30000000, 80000000}, options = {"SSJB Wukong", "Broccoli"}},
     {range = {80000000, math.huge}, options = {"SSJG Kakata", "Broccoli"}}
 }
-
 local questDataInsideID = {
     {range = {200000000, 1500000000}, options = {"Vegetable (GoD in-training)", "Wukong (Omen)"}},
     {range = {1500000000, 2500000000}, options = {"Vis (20%)", "Vegetable (LBSSJ4)"}},
@@ -297,7 +294,6 @@ local function assignQuest()
     end
 end
 
-
 local function startMission()
     if data.Quest.Value == ""  then
         pcall(function()
@@ -310,7 +306,7 @@ local function startMission()
     end
 end
 
-
+--Ciclo para Auto = Start Mission Farm - Boss
 task.spawn(function()
     while true do
         game:GetService("RunService").Stepped:Wait()
@@ -330,7 +326,7 @@ task.spawn(function()
     end
 end)
     
-
+--Ciclo para Auto = Tp Boss A Cualquier Tipo De boss
 task.spawn(function()
     while true do
         pcall(function()
@@ -346,13 +342,12 @@ task.spawn(function()
     end
 end)
 
-
+--Ciclo para Auto = Quest y Tp Con Tiempo
 task.spawn(function()
     while true do
         pcall(function()
             if getIsActive2() then
                 local currentGameHour = math.floor(game.Lighting.ClockTime)
-
                 if currentGameHour == 20 or currentGameHour == 2 then
                     if data.Quest.Value == "" then
                         lplr.Character.HumanoidRootPart.CFrame = game.Workspace.Others.NPCs["Kid Nohag"].HumanoidRootPart.CFrame * CFrame.new(0, 0, 5)
@@ -370,6 +365,7 @@ task.spawn(function()
     end
 end)
 
+--Ciclo para Auto = Tp Boss y Mono
 task.spawn(function()
     while true do
         pcall(function()
@@ -393,6 +389,7 @@ task.spawn(function()
     end
 end)
 
+--Ciclo para Auto = Tierra 
 task.spawn(function()
     while true do
         pcall(function()
@@ -405,7 +402,7 @@ task.spawn(function()
     end
 end)
 
-
+--Ciclo para Auto = Bills Del Cuadro
 task.spawn(function()
     while true do
         if minStrength and game.PlaceId ~= 5151400895 and data.Strength.Value >= minStrength then
@@ -424,6 +421,7 @@ local Iplr = game.Players.LocalPlayer
 local data = game.ReplicatedStorage.Datas[Iplr.UserId]
 local dat = (game.PlaceId == 5151400895) and game.Workspace.Living:FindFirstChild(Iplr.Name) or game.Players.LocalPlayer
 
+--Ciclo para Auto = Atakes  solo si no existe con = if not dat.Status:FindFirstChild(move) then
 task.spawn(function()
     while true do
         pcall(function()
@@ -445,81 +443,102 @@ task.spawn(function()
                 end
             end
         end)
-        wait(1)
+        wait()
     end
 end)
 
+--Ciclo para Auto = Puños
 task.spawn(function()
     while true do
         pcall(function()
             if data.Quest.Value ~= "" and  getIsActive4() then
                 game:GetService("ReplicatedStorage").Package.Events.p:FireServer("Blacknwhite27", 1)
-                game:GetService("ReplicatedStorage").Package.Events.p:FireServer("Blacknwhite27", 2)
-                    
+                game:GetService("ReplicatedStorage").Package.Events.p:FireServer("Blacknwhite27", 2)                    
             end
         end)
         wait()
     end
 end)
 
+--Ciclo para Auto = Carga
 task.spawn(function()
     while true do
         pcall(function()
-            if   getIsActive4() then
-                    game:GetService("ReplicatedStorage").Package.Events.cha:InvokeServer("Blacknwhite27")            
+            if getIsActive4() then
+            game:GetService("ReplicatedStorage").Package.Events.cha:InvokeServer("Blacknwhite27")            
             end
         end)
         task.wait()
     end
 end)
 
+--Ciclo para Auto = Rebirth
 task.spawn(function()
     while true do
         pcall(function()
             if getIsActive5() then
                 game:GetService("ReplicatedStorage").Package.Events.reb:InvokeServer()
-                
             end
         end)
         wait(.5)
     end
 end)
 
+--Ciclo Para Auto = Main y Start
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Workspace = game:GetService("Workspace")
+local lplr = Players.LocalPlayer
 
 spawn(function()
-    local originalPosition = lplr.Character.HumanoidRootPart.Position
-
-    local bodyPosition = Instance.new("BodyPosition")
-    bodyPosition.MaxForce = Vector3.new(400000, 400000, 400000)
-    bodyPosition.D = 1000
-    bodyPosition.P = 10000
-    bodyPosition.Position = originalPosition + Vector3.new(0, 5, 0)  -- Eleva un poco
-    bodyPosition.Parent = lplr.Character.HumanoidRootPart
-
-    local Event = game:GetService("ReplicatedStorage").Package.Events.Start
-    Event:InvokeServer()
-    wait()
-
-    Event:InvokeServer()
-    wait()
-
-    lplr.PlayerGui.Main.bruh.Disabled = true
-    lplr.PlayerGui.Main.bruh.Disabled = false
-    task.wait()
-
-    Event:InvokeServer()
-
-    wait()
-
-    bodyPosition:Destroy()
-
-    game.Workspace.Gravity = 196.2
+    if lplr.PlayerGui:FindFirstChild("Start") then
+        ReplicatedStorage.Package.Events.Start:InvokeServer()
+        if Workspace.Others:FindFirstChild("Title") then
+            Workspace.Others.Title:Destroy()
+        end
+        local cam = Workspace.CurrentCamera
+        cam.CameraType = Enum.CameraType.Custom
+        cam.CameraSubject = lplr.Character.Humanoid
+        _G.Ready = true
+        game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.All, true)
+        lplr.PlayerGui.Main.Enabled = true
+        if lplr.PlayerGui:FindFirstChild("Start") then
+            lplr.PlayerGui.Start:Destroy()
+        end
+        -- Actualización del objeto 'bruh'
+        lplr.PlayerGui.Main.bruh.Enabled = false
+        lplr.PlayerGui.Main.bruh.Enabled = true
+    end
 end)
             
---fin de todo \/
-    end)    
-    wait(1)
+spawn(function()
+    local events = {
+        {"Astral Instinct", 120e6, "Divine Rose Prominence"}
+    }
+
+    while true do
+        pcall(function()
+            local Work = game.Workspace.Living[lplr.Name]
+            if Work then
+                local transformation = Work.Status.Transformation.Value
+                local strength = data.Strength.Value
+
+                if transformation == "None" then
+                    for _, event in ipairs(events) do
+                        if strength >= event[2] then
+                            game:GetService("ReplicatedStorage").Package.Events.equipskill:InvokeServer(event[1])
+                        else
+                            game:GetService("ReplicatedStorage").Package.Events.equipskill:InvokeServer(event[3])
+                        end
+                    end
+                    game:GetService("ReplicatedStorage").Package.Events.ta:InvokeServer()
+                end
+            end
+        end)
+        wait()
+    end
 end)
-
-
-
+--fin de todo \/
+       end)    
+    wait(.5)
+end)
